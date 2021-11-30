@@ -45,7 +45,7 @@ const CenterContainer = styled(motion.div)`
     align-items: flex-start;
   }
 `;
-const CenterProfile = styled.div`
+const CenterProfile = styled(motion.div)`
   align-self: center;
   margin-top: 4vw;
   border: 2px solid ${(props) => props.theme.darkText};
@@ -134,19 +134,20 @@ const About = styled(NavLink)`
   }
   z-index: 1;
 `;
+
 const HomePage = () => {
   return (
     <Container>
       <CenterContainer
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0.5 }}
         animate={{
           opacity: 1,
-          transition: { type: "spring", duration: 3 },
+          transition: { type: "spring", duration: 2 },
         }}
       >
-        <h1>Hey There! I am Ajay,</h1>
-        <h3>a designer and developer</h3>
-        <h3>who enjoys building great stuff!</h3>
+        <motion.h1>Hey There! I am Ajay,</motion.h1>
+        <motion.h3>a designer and developer</motion.h3>
+        <motion.h3>who enjoys building great stuff!</motion.h3>
         <CenterProfile>
           <img src={myImage} alt="Developer Profile Pic" className="noselect" />
         </CenterProfile>
