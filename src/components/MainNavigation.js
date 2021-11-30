@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Linkedin, Github } from "./SubComponents/AllSvgs";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 const Layout = styled.div`
   z-index: 1;
   width: 100vw;
@@ -23,15 +24,18 @@ const Layout = styled.div`
     font-size: 4.5rem;
   }
 `;
-const Line = styled.div`
+const Line = styled(motion.div)`
   width: 10vw;
   border: 2px solid ${(props) => props.theme.darkText};
   background-color: ${(props) => props.theme.darkText};
 `;
-const MiddleLine = styled.div`
+const MiddleLine = styled(motion.div)`
   width: 100%;
   border: 2px solid ${(props) => props.theme.darkText};
   background-color: ${(props) => props.theme.darkText};
+  align-self: center;
+  justify-self: center;
+  text-align: center;
 `;
 const Logo = styled.div`
   padding-bottom: 1.5rem;
@@ -43,7 +47,7 @@ const Logo = styled.div`
     color: ${(props) => props.theme.darkText};
   }
 `;
-const LinkedInContainer = styled(NavLink).attrs((_) => ({
+const LinkedInContainer = motion(styled(NavLink).attrs((_) => ({
   target: "_blank",
   to: { pathname: "https://www.linkedin.com/in/g-ajay-chandra/" },
 }))`
@@ -61,7 +65,7 @@ const LinkedInContainer = styled(NavLink).attrs((_) => ({
     transform: scale(1.1);
     cursor: pointer;
   }
-`;
+`);
 const GithubContainer = styled(LinkedInContainer).attrs((_) => ({
   target: "_blank",
   to: { pathname: "https://github.com/AjayChandraOfficial" },
@@ -69,18 +73,44 @@ const GithubContainer = styled(LinkedInContainer).attrs((_) => ({
 const MainNavigation = () => {
   return (
     <Layout>
-      <Line />
+      <Line
+        initial={{ x: -200 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 1 }}
+      />
       <Logo>
-        <h2>Aj</h2>
+        <motion.h2
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, scale: [0.8, 1.2, 0.8, 1] }}
+          transition={{ duration: 1, delay: 0.7 }}
+        >
+          Aj
+        </motion.h2>
       </Logo>
-      <MiddleLine />
-      <LinkedInContainer>
+      <MiddleLine
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      />
+      <LinkedInContainer
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, scale: [0.8, 1.2, 0.8, 1] }}
+        transition={{ duration: 1, delay: 0.9 }}
+      >
         <Linkedin />
       </LinkedInContainer>
-      <GithubContainer>
+      <GithubContainer
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, scale: [0.8, 1.2, 0.8, 1] }}
+        transition={{ duration: 1, delay: 0.7 }}
+      >
         <Github />
       </GithubContainer>
-      <Line />
+      <Line
+        initial={{ x: 200 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 1 }}
+      />
     </Layout>
   );
 };

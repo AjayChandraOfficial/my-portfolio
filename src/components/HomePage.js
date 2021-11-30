@@ -103,6 +103,9 @@ const Work = styled(NavLink)`
   }
   color: ${(props) => props.theme.darkText};
   z-index: 1;
+  @media (max-width: 800px) {
+    top: 65%;
+  }
 `;
 const Skills = styled(NavLink)`
   position: absolute;
@@ -116,6 +119,9 @@ const Skills = styled(NavLink)`
 
   color: ${(props) => props.theme.darkText};
   z-index: 1;
+  @media (max-width: 800px) {
+    top: 65%;
+  }
 `;
 const About = styled(NavLink)`
   position: absolute;
@@ -128,6 +134,9 @@ const About = styled(NavLink)`
   }
 
   color: ${(props) => props.theme.darkText};
+  @media (max-width: 800px) {
+    bottom: 5%;
+  }
   z-index: 1;
 `;
 const HomePage = () => {
@@ -143,13 +152,70 @@ const HomePage = () => {
       </CenterContainer>
 
       <Work to="/">
-        <motion.h2 whileHover={{ scale: 1.1 }}>Projects</motion.h2>
+        <motion.h2
+          whileHover={{
+            scale: 1.1,
+            transition: {
+              delay: 0,
+              type: "spring",
+              mass: 0.4,
+              stiffness: 200,
+              damping: 1,
+            },
+          }}
+          initial={{ y: 200 }}
+          animate={{
+            y: 0,
+            transition: { type: "spring", delay: 0.6, duration: 1 },
+          }}
+        >
+          Projects
+        </motion.h2>
       </Work>
+
       <Skills to="/">
-        <motion.h2 whileHover={{ scale: 1.1 }}>Skills</motion.h2>
+        <motion.h2
+          whileHover={{
+            scale: 1.1,
+            transition: {
+              delay: 0,
+              type: "spring",
+              mass: 0.4,
+              stiffness: 200,
+              damping: 1,
+            },
+          }}
+          initial={{ y: 200 }}
+          animate={{
+            y: 0,
+            transition: { type: "spring", delay: 0.6, duration: 1 },
+          }}
+          transition={{ type: "spring", delay: 0.6, duration: 1 }}
+        >
+          Skills
+        </motion.h2>
       </Skills>
       <About to="/">
-        <motion.h2 whileHover={{ scale: 1.1 }}>About</motion.h2>
+        <motion.h2
+          whileHover={{
+            scale: 1.1,
+            transition: {
+              delay: 0,
+              type: "spring",
+              mass: 0.4,
+              stiffness: 200,
+              damping: 1,
+            },
+          }}
+          initial={{ y: 200 }}
+          animate={{
+            y: 0,
+            transition: { type: "spring", delay: 0.6, duration: 1 },
+          }}
+          transition={{ type: "spring", delay: 0.6, duration: 1 }}
+        >
+          About
+        </motion.h2>
       </About>
       <ParticleComponent />
     </Container>
