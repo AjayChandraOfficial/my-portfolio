@@ -1,7 +1,9 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import myImage from "../assets/Images/myImage.png";
 import ParticleComponent from "./SubComponents/ParticleComponent";
+import { motion } from "framer-motion";
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -10,10 +12,7 @@ const Container = styled.div`
   overflow: hidden;
   z-index: 0;
 `;
-const Title = styled.h1`
-  font-size: 2.4rem;
-  color: ${(props) => props.theme.text};
-`;
+
 const CenterContainer = styled.div`
   width: 70%;
   line-height: 1.5;
@@ -48,7 +47,7 @@ const CenterContainer = styled.div`
 `;
 const CenterProfile = styled.div`
   align-self: center;
-  margin-top: 6vw;
+  margin-top: 4vw;
   border: 2px solid ${(props) => props.theme.darkText};
   background-color: ${(props) => props.theme.darkText};
   border-radius: 50%;
@@ -67,6 +66,7 @@ const CenterProfile = styled.div`
     transform: scale(1.05);
     cursor: pointer;
     box-shadow: 1px 1px 8px 8px #080808;
+
     /* background-color: ${(props) => props.theme.text}; */
     img {
       /* transform: scale(1.05); */
@@ -91,7 +91,45 @@ const CenterProfile = styled.div`
   }
 `;
 
-const Work = styled.h1``;
+const Work = styled(NavLink)`
+  position: absolute;
+
+  top: 50%;
+  left: calc(3rem + 1vw);
+  text-decoration: none;
+  transform: translate(-50%, -50%) rotate(90deg);
+  h2 {
+    font-size: calc(2rem + 1.3vw);
+  }
+  color: ${(props) => props.theme.darkText};
+  z-index: 1;
+`;
+const Skills = styled(NavLink)`
+  position: absolute;
+  text-decoration: none;
+  top: 50%;
+  right: calc(0.5rem + 1vw);
+  transform: rotate(-90deg) translateY(50%);
+  h2 {
+    font-size: calc(2rem + 1.3vw);
+  }
+
+  color: ${(props) => props.theme.darkText};
+  z-index: 1;
+`;
+const About = styled(NavLink)`
+  position: absolute;
+  text-decoration: none;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%);
+  h2 {
+    font-size: calc(2rem + 1.3vw);
+  }
+
+  color: ${(props) => props.theme.darkText};
+  z-index: 1;
+`;
 const HomePage = () => {
   return (
     <Container>
@@ -100,11 +138,19 @@ const HomePage = () => {
         <h3>a designer and developer</h3>
         <h3>who enjoys building great stuff!</h3>
         <CenterProfile>
-          <img src={myImage} alt="Developer Profile Pic" />
+          <img src={myImage} alt="Developer Profile Pic" className="noselect" />
         </CenterProfile>
       </CenterContainer>
 
-      <Work></Work>
+      <Work to="/">
+        <motion.h2 whileHover={{ scale: 1.1 }}>Projects</motion.h2>
+      </Work>
+      <Skills to="/">
+        <motion.h2 whileHover={{ scale: 1.1 }}>Skills</motion.h2>
+      </Skills>
+      <About to="/">
+        <motion.h2 whileHover={{ scale: 1.1 }}>About</motion.h2>
+      </About>
       <ParticleComponent />
     </Container>
   );
