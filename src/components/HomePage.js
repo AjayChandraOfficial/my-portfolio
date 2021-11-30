@@ -13,7 +13,7 @@ const Container = styled.div`
   z-index: 0;
 `;
 
-const CenterContainer = styled.div`
+const CenterContainer = styled(motion.div)`
   width: 70%;
   line-height: 1.5;
   position: absolute;
@@ -66,11 +66,6 @@ const CenterProfile = styled.div`
     transform: scale(1.05);
     cursor: pointer;
     box-shadow: 1px 1px 8px 8px #080808;
-
-    /* background-color: ${(props) => props.theme.text}; */
-    img {
-      /* transform: scale(1.05); */
-    }
   }
   img {
     position: absolute;
@@ -142,7 +137,13 @@ const About = styled(NavLink)`
 const HomePage = () => {
   return (
     <Container>
-      <CenterContainer>
+      <CenterContainer
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          transition: { type: "spring", duration: 3 },
+        }}
+      >
         <h1>Hey There! I am Ajay,</h1>
         <h3>a designer and developer</h3>
         <h3>who enjoys building great stuff!</h3>
@@ -190,7 +191,6 @@ const HomePage = () => {
             y: 0,
             transition: { type: "spring", delay: 0.6, duration: 1 },
           }}
-          transition={{ type: "spring", delay: 0.6, duration: 1 }}
         >
           Skills
         </motion.h2>
@@ -212,7 +212,6 @@ const HomePage = () => {
             y: 0,
             transition: { type: "spring", delay: 0.6, duration: 1 },
           }}
-          transition={{ type: "spring", delay: 0.6, duration: 1 }}
         >
           About
         </motion.h2>
