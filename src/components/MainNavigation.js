@@ -4,7 +4,6 @@ import { Linkedin, Github } from "./SubComponents/AllSvgs";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 const Layout = styled.div`
-  z-index: 1;
   width: 100vw;
   height: 5vw;
   padding-top: 2.5rem;
@@ -23,6 +22,7 @@ const Layout = styled.div`
     color: white;
     font-size: 4.5rem;
   }
+  z-index: 2;
 `;
 const Line = styled(motion.div)`
   width: 10vw;

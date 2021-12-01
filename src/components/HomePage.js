@@ -10,7 +10,6 @@ const Container = styled.div`
   background-color: ${(props) => props.theme.background};
   position: relative;
   overflow: hidden;
-  z-index: 0;
 `;
 
 const CenterContainer = styled(motion.div)`
@@ -57,7 +56,6 @@ const CenterProfile = styled(motion.div)`
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 2;
 
   transition: all 0.4s;
   /* SHADOW */
@@ -70,9 +68,10 @@ const CenterProfile = styled(motion.div)`
   img {
     position: absolute;
     transition: all 0.4s;
-    z-index: 2;
+
     bottom: -1.2%;
     width: 20rem;
+    z-index: 3;
     /* @media (max-width: 800px) {
       width: 14rem;
     } */
@@ -92,28 +91,29 @@ const Work = styled(NavLink)`
   top: 50%;
   left: calc(3rem + 1vw);
   text-decoration: none;
-  transform: translate(-50%, -50%) rotate(90deg);
+  transform: translate(-50%, -50%) rotate(-90deg);
   h2 {
     font-size: calc(2rem + 1.3vw);
   }
   color: ${(props) => props.theme.darkText};
-  z-index: 1;
   @media (max-width: 800px) {
     top: 65%;
   }
+  z-index: 3;
 `;
 const Skills = styled(NavLink)`
   position: absolute;
   text-decoration: none;
   top: 50%;
-  right: calc(0.5rem + 1vw);
-  transform: rotate(-90deg) translateY(50%);
+  right: 0;
+  transform: rotate(90deg);
   h2 {
     font-size: calc(2rem + 1.3vw);
   }
 
   color: ${(props) => props.theme.darkText};
-  z-index: 1;
+  z-index: 3;
+
   @media (max-width: 800px) {
     top: 65%;
   }
@@ -132,7 +132,7 @@ const About = styled(NavLink)`
   @media (max-width: 800px) {
     bottom: 5%;
   }
-  z-index: 1;
+  z-index: 3;
 `;
 
 const HomePage = () => {
@@ -165,7 +165,7 @@ const HomePage = () => {
               damping: 1,
             },
           }}
-          initial={{ y: 200 }}
+          initial={{ y: -200 }}
           animate={{
             y: 0,
             transition: { type: "spring", delay: 0.6, duration: 1 },
@@ -175,7 +175,7 @@ const HomePage = () => {
         </motion.h2>
       </Work>
 
-      <Skills to="/">
+      <Skills to="/skills">
         <motion.h2
           whileHover={{
             scale: 1.1,
@@ -187,7 +187,7 @@ const HomePage = () => {
               damping: 1,
             },
           }}
-          initial={{ y: 200 }}
+          initial={{ y: -200 }}
           animate={{
             y: 0,
             transition: { type: "spring", delay: 0.6, duration: 1 },
