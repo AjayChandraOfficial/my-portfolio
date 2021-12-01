@@ -139,10 +139,10 @@ const HomePage = () => {
   return (
     <Container>
       <CenterContainer
-        initial={{ opacity: 0.5 }}
+        initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { type: "spring", duration: 2 },
+          transition: { type: "spring", duration: 2, delay: 0.2 },
         }}
       >
         <motion.h1>Hey There! I am Ajay,</motion.h1>

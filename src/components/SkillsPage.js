@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { AllSKills } from "./SubComponents/AllSkills";
 import SkillComponent from "./SubComponents/SkillComponent";
+import ParticleComponent2 from "./SubComponents/ParticleComponent2";
+import spaceman from "../assets/Images/spaceman.png";
+import { NavLink } from "react-router-dom";
 const Box = styled.div`
   width: 100vw;
   height: 100vh;
@@ -42,7 +45,7 @@ const Line = styled(motion.div)`
     /* display: none; */
   }
 `;
-const SkillsContainer = styled.div`
+const SkillsContainer = styled(motion.div)`
   width: 70%;
   height: 20%;
   position: absolute;
@@ -90,18 +93,103 @@ const SkillsContainer = styled.div`
     }
   } ;
 `;
+
+const SkillsContainerVariants = {
+  from: { opacity: 0 },
+  to: {
+    opacity: 1,
+    transition: { type: "tween", when: "beforeChildren" },
+  },
+};
+const float = keyframes`
+0%{ transform:translateY(0)}
+50%{ transform:translateY(20px)translateX(20px)}
+100%{transform:translateY(0)}
+`;
+
+const Spaceman = styled.div`
+  position: absolute;
+  display: none;
+  width: 10vw;
+  right: 5%;
+  top: 20%;
+  animation: ${float} 5s ease infinite;
+  img {
+    width: 100%;
+  }
+  z-index: 5;
+`;
+const Home = styled(NavLink)`
+  position: absolute;
+
+  top: 50%;
+  left: calc(3rem + 1vw);
+  text-decoration: none;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  h2 {
+    font-size: calc(2rem + 1.3vw);
+  }
+  color: ${(props) => props.theme.darkText};
+  @media (max-width: 800px) {
+    top: 65%;
+  }
+  z-index: 3;
+`;
 const SkillsPage = () => {
   return (
     <Box>
       <Center>
-        <h1>Technologies I use</h1>
-        <Line />
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: { type: "spring", duration: 1, delay: 0.2 },
+          }}
+        >
+          Technologies I use
+        </motion.h1>
+        <Line
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: { type: "spring", duration: 1, delay: 0.2 },
+          }}
+        />
       </Center>
-      <SkillsContainer>
+      <SkillsContainer
+        variants={SkillsContainerVariants}
+        initial="from"
+        animate="to"
+      >
         {AllSKills.map((item) => (
           <SkillComponent key={item.id} data={item} />
         ))}
       </SkillsContainer>
+      <ParticleComponent2 />
+      <Spaceman>
+        <img src={spaceman} alt="Astronaut" />
+      </Spaceman>
+      <Home to="/">
+        <motion.h2
+          whileHover={{
+            scale: 1.1,
+            transition: {
+              delay: 0,
+              type: "spring",
+              mass: 0.4,
+              stiffness: 200,
+              damping: 1,
+            },
+          }}
+          initial={{ y: -200 }}
+          animate={{
+            y: 0,
+            transition: { type: "spring", delay: 0.6, duration: 1 },
+          }}
+        >
+          Home
+        </motion.h2>
+      </Home>
     </Box>
   );
 };

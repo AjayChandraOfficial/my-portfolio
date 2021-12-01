@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
-const Container = styled.div`
+import { motion } from "framer-motion";
+const Container = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,10 +15,18 @@ const Container = styled.div`
     transform: scale(0.7);
   }
 `;
+const ContainerVariants = {
+  from: { opacity: 0 },
+  to: {
+    opacity: 1,
+    scale: [0.8, 1.2, 0.8, 1],
+    transition: { type: "spring", duration: 1, delay: 0.4 },
+  },
+};
 const SkillComponent = (props) => {
   const { title, component, textColor } = props.data;
   return (
-    <Container text={textColor}>
+    <Container text={textColor} variants={ContainerVariants}>
       {component()}
       <h2>{title}</h2>
     </Container>
