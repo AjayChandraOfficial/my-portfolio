@@ -70,6 +70,7 @@ const GithubContainer = styled(LinkedInContainer).attrs((_) => ({
   target: "_blank",
   to: { pathname: "https://github.com/AjayChandraOfficial" },
 }))``;
+
 const MainNavigation = () => {
   return (
     <Layout>

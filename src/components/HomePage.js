@@ -11,7 +11,6 @@ const Container = styled(motion.div)`
   position: relative;
   overflow: hidden;
 `;
-
 const CenterContainer = styled(motion.div)`
   width: 70%;
   line-height: 1.5;
@@ -84,7 +83,6 @@ const CenterProfile = styled(motion.div)`
     }
   }
 `;
-
 const Work = styled(NavLink)`
   position: absolute;
 
@@ -135,9 +133,29 @@ const About = styled(NavLink)`
   z-index: 3;
 `;
 
+let exitX;
+let exitY;
 const HomePage = () => {
+  const workClicked = () => {
+    exitX = 1000;
+    exitY = 0;
+  };
+  const skillsClicked = () => {
+    exitX = -1000;
+    exitY = 0;
+  };
+  const aboutClicked = () => {
+    exitX = 0;
+    exitY = -1000;
+  };
   return (
-    <Container exit={{ x: -1000, transition: { duration: 0.8 } }}>
+    <Container
+      exit={{
+        x: exitX ? exitX : 0,
+        y: exitY ? exitY : 0,
+        transition: { duration: 0.8 },
+      }}
+    >
       <CenterContainer
         initial={{ opacity: 0 }}
         animate={{
@@ -154,7 +172,7 @@ const HomePage = () => {
         </CenterProfile>
       </CenterContainer>
 
-      <Work to="/projects">
+      <Work to="/projects" onClick={workClicked}>
         <motion.h2
           whileHover={{
             scale: 1.1,
@@ -176,8 +194,7 @@ const HomePage = () => {
           Projects
         </motion.h2>
       </Work>
-
-      <Skills to="/skills">
+      <Skills to="/skills" onClick={skillsClicked}>
         <motion.h2
           whileHover={{
             scale: 1.1,
@@ -199,7 +216,7 @@ const HomePage = () => {
           Skills
         </motion.h2>
       </Skills>
-      <About to="/">
+      <About to="/" onClick={aboutClicked}>
         <motion.h2
           whileHover={{
             scale: 1.1,

@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
 
 }
 html{
+    overflow: hidden;
     font-size:62.5%;
 }
 body{
@@ -14,6 +15,7 @@ body{
     margin:0;
     padding:0;
     background-color:#121212;
+    overflow: hidden;
 }
 
 `;

@@ -144,13 +144,10 @@ const Home = styled(NavLink)`
   }
   z-index: 3;
 `;
-const anim_BoxVariant = {
-  exit: { x: 0, transition: { duration: 0.2 } },
-};
 
 const SkillsPage = () => {
   return (
-    <Box exit={{ opacity: 0, transition: { duration: 0.8 } }}>
+    <Box exit={{ x: 1000, transition: { duration: 0.8 } }}>
       <Center>
         <motion.h1
           initial={{ opacity: 0 }}
@@ -158,7 +155,7 @@ const SkillsPage = () => {
             opacity: 1,
             transition: { type: "spring", duration: 1, delay: 0.2 },
           }}
-          // exit={{ opacity: 0, transition: { duration: 0.4 } }}
+          exit={{ opacity: 0, transition: { duration: 0.4 } }}
         >
           Technologies I use
         </motion.h1>
@@ -168,14 +165,14 @@ const SkillsPage = () => {
             opacity: 1,
             transition: { type: "spring", duration: 1, delay: 0.2 },
           }}
-          // exit={{ opacity: 0, transition: { duration: 0.4 } }}
+          exit={{ opacity: 0, transition: { duration: 0.4 } }}
         />
       </Center>
       <SkillsContainer
         variants={SkillsContainerVariants}
         initial="from"
         animate="to"
-        // exit={{ opacity: 0, transition: { duration: 0.4 } }}
+        exit={{ opacity: 0, transition: { duration: 0.4 } }}
       >
         {AllSKills.map((item) => (
           <SkillComponent key={item.id} data={item} />
@@ -202,7 +199,7 @@ const SkillsPage = () => {
             y: 0,
             transition: { type: "spring", delay: 0.6, duration: 1 },
           }}
-          exit={{ y: -200, transition: { duration: 0.6 } }}
+          exit={{ opacity: 0, transition: { duration: 0.6 } }}
         >
           Home
         </motion.h2>
