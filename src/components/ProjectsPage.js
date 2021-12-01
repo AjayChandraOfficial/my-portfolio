@@ -7,8 +7,11 @@ import { NavLink } from "react-router-dom";
 const Box = styled(motion.div)`
   height: 100vh;
   position: relative;
-  display: flex;
-  /* overflow: hidden; */
+
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  z-index: 1;
   @media (max-width: 800px) {
     overflow-y: scroll;
   }
@@ -43,7 +46,7 @@ const Line = styled(motion.div)`
   }
 `;
 const ProjectsContainer = styled(motion.div)`
-  position: fixed;
+  position: absolute;
   top: 45%;
   left: calc(4rem + 4vw);
   display: grid;
@@ -65,6 +68,8 @@ const ProjectsContainer = styled(motion.div)`
     grid-template-columns: repeat(1, 1fr);
 
     row-gap: calc(5rem + 5vw);
+  }
+  & > *:hover {
   }
 `;
 
@@ -90,7 +95,7 @@ const anim_ProjectVariant = {
   to: {
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: 0.2,
       when: "beforeChildren",
       staggerChildren: 0.3,
     },

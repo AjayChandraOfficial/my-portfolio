@@ -15,10 +15,12 @@ const Box = styled(motion.div)`
   left: 0;
   bottom: 0; */
   position: relative;
-  overflow: hidden;
-  @media (max-height: 800px) {
+  overflow-y: hidden;
+  /* z-index: 1; */
+  @media (max-width: 800px) {
     overflow-y: scroll;
   }
+
   background-color: ${(props) => props.theme.background};
 `;
 const Center = styled.div`

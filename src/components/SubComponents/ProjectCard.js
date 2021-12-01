@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 const Card = styled(motion.div)`
+  display: inline-block;
   width: 18rem;
   height: 35vh;
   background-color: ${(props) => props.theme.text};
@@ -14,6 +15,7 @@ const Card = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  z-index: 1;
   h1 {
     color: ${(props) => props.theme.background};
     font-size: calc(1rem + 1vw);
@@ -32,7 +34,6 @@ const Card = styled(motion.div)`
 
   transition: all 0.2s;
   &:hover {
-    transform: rotate(-2deg) scale(1.1);
     background-color: ${(props) => props.theme.background};
     h1 {
       color: ${(props) => props.theme.text};
@@ -103,10 +104,16 @@ const anim_CardVariant = {
       duration: 0.7,
     },
   },
+  hover: {
+    scale: 0.8,
+    transition: {
+      duration: 0.1,
+    },
+  },
 };
 
 const ProjectCard = (props) => {
-  const { id, title, description, link } = props.data;
+  const { title, description, link } = props.data;
   return (
     <Card variants={anim_CardVariant}>
       <h1>{title}</h1>
