@@ -6,7 +6,7 @@ import SkillComponent from "./SubComponents/SkillComponent";
 import ParticleComponent2 from "./SubComponents/ParticleComponent2";
 import spaceman from "../assets/Images/spaceman.png";
 import { NavLink } from "react-router-dom";
-const Box = styled.div`
+const Box = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   /* position: absolute;
@@ -14,11 +14,15 @@ const Box = styled.div`
   right: 0;
   left: 0;
   bottom: 0; */
+  position: relative;
+  overflow: hidden;
+
   background-color: ${(props) => props.theme.background};
 `;
 const Center = styled.div`
   width: 70%;
   position: absolute;
+  overflow: hidden;
   left: 50%;
   top: 25%;
   transform: translateX(-50%);
@@ -38,6 +42,7 @@ const Center = styled.div`
 `;
 const Line = styled(motion.div)`
   width: 30vw;
+
   border: 2px solid ${(props) => props.theme.text};
   background-color: ${(props) => props.theme.text};
   @media (max-width: 800px) {
@@ -64,13 +69,16 @@ const SkillsContainer = styled(motion.div)`
   }
   @media (max-width: 800px) {
     grid-template-columns: repeat(6, 1fr);
+    top: 50%;
   }
   @media (max-width: 600px) {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr 1fr 1fr;
+    top: 35%;
     & > :nth-child(9) {
       /* display: none;
      */
+
       grid-column: 1;
     }
   }
@@ -80,6 +88,7 @@ const SkillsContainer = styled(motion.div)`
     & > :nth-child(9) {
       /* display: none;
      */
+
       grid-column: 1;
     }
   }
@@ -135,9 +144,13 @@ const Home = styled(NavLink)`
   }
   z-index: 3;
 `;
+const anim_BoxVariant = {
+  exit: { x: 0, transition: { duration: 0.2 } },
+};
+
 const SkillsPage = () => {
   return (
-    <Box>
+    <Box exit={{ opacity: 0, transition: { duration: 0.8 } }}>
       <Center>
         <motion.h1
           initial={{ opacity: 0 }}
@@ -145,6 +158,7 @@ const SkillsPage = () => {
             opacity: 1,
             transition: { type: "spring", duration: 1, delay: 0.2 },
           }}
+          // exit={{ opacity: 0, transition: { duration: 0.4 } }}
         >
           Technologies I use
         </motion.h1>
@@ -154,12 +168,14 @@ const SkillsPage = () => {
             opacity: 1,
             transition: { type: "spring", duration: 1, delay: 0.2 },
           }}
+          // exit={{ opacity: 0, transition: { duration: 0.4 } }}
         />
       </Center>
       <SkillsContainer
         variants={SkillsContainerVariants}
         initial="from"
         animate="to"
+        // exit={{ opacity: 0, transition: { duration: 0.4 } }}
       >
         {AllSKills.map((item) => (
           <SkillComponent key={item.id} data={item} />
@@ -186,6 +202,7 @@ const SkillsPage = () => {
             y: 0,
             transition: { type: "spring", delay: 0.6, duration: 1 },
           }}
+          exit={{ y: -200, transition: { duration: 0.6 } }}
         >
           Home
         </motion.h2>

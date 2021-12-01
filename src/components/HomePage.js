@@ -4,7 +4,7 @@ import styled from "styled-components";
 import myImage from "../assets/Images/myImage.png";
 import ParticleComponent from "./SubComponents/ParticleComponent";
 import { motion } from "framer-motion";
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   background-color: ${(props) => props.theme.background};
@@ -137,13 +137,14 @@ const About = styled(NavLink)`
 
 const HomePage = () => {
   return (
-    <Container>
+    <Container exit={{ x: -1000, transition: { duration: 0.8 } }}>
       <CenterContainer
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
           transition: { type: "spring", duration: 2, delay: 0.2 },
         }}
+        exit={{ opacity: 0, transition: { duration: 0.5 } }}
       >
         <motion.h1>Hey There! I am Ajay,</motion.h1>
         <motion.h3>a designer and developer</motion.h3>
@@ -153,7 +154,7 @@ const HomePage = () => {
         </CenterProfile>
       </CenterContainer>
 
-      <Work to="/">
+      <Work to="/projects">
         <motion.h2
           whileHover={{
             scale: 1.1,
@@ -170,6 +171,7 @@ const HomePage = () => {
             y: 0,
             transition: { type: "spring", delay: 0.6, duration: 1 },
           }}
+          exit={{ opacity: 0, transition: { duration: 0.4 } }}
         >
           Projects
         </motion.h2>
@@ -192,6 +194,7 @@ const HomePage = () => {
             y: 0,
             transition: { type: "spring", delay: 0.6, duration: 1 },
           }}
+          exit={{ opacity: 0, transition: { duration: 0.4 } }}
         >
           Skills
         </motion.h2>
@@ -213,6 +216,7 @@ const HomePage = () => {
             y: 0,
             transition: { type: "spring", delay: 0.6, duration: 1 },
           }}
+          exit={{ opacity: 0, transition: { duration: 0.4 } }}
         >
           About
         </motion.h2>

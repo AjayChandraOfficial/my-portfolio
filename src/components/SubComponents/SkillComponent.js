@@ -14,6 +14,10 @@ const Container = styled(motion.div)`
   & > :first-child {
     transform: scale(0.7);
   }
+  /* @media (max-width: 400px) {
+    & > :first-child {
+      transform: scale(0.5);
+    } */
 `;
 const ContainerVariants = {
   from: { opacity: 0 },
