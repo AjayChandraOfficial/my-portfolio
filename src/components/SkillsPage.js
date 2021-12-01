@@ -16,7 +16,9 @@ const Box = styled(motion.div)`
   bottom: 0; */
   position: relative;
   overflow: hidden;
-
+  @media (max-height: 800px) {
+    overflow-y: scroll;
+  }
   background-color: ${(props) => props.theme.background};
 `;
 const Center = styled.div`
@@ -52,7 +54,7 @@ const Line = styled(motion.div)`
 `;
 const SkillsContainer = styled(motion.div)`
   width: 70%;
-  height: 20%;
+  height: 40%;
   position: absolute;
   left: 50%;
   top: 50%;
