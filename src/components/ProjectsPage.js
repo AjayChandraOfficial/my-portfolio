@@ -5,6 +5,7 @@ import ProjectCard from "./SubComponents/ProjectCard";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import MainNavigation from "./MainNavigation";
+
 const Box = styled(motion.div)`
   height: 100vh;
   position: relative;

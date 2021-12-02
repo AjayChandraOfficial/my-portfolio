@@ -1,3 +1,5 @@
+import Bankerr from "../../assets/BankerrPrototype.pdf";
+
 export const AllProjects = [
   {
     id: "p1",
@@ -25,6 +27,6 @@ export const AllProjects = [
     title: "Bankerr",
     description:
       "A minimal banking app made using React. This is currently an ongoing project which I am working on",
-    link: "/",
+    link: Bankerr,
   },
 ];
