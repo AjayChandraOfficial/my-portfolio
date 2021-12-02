@@ -1,7 +1,6 @@
 import HomePage from "./components/HomePage";
 import { GlobalStyle } from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
-import MainNavigation from "./components/MainNavigation";
 import { useLocation } from "react-router-dom";
 import SkillsPage from "./components/SkillsPage";
 import { AnimatePresence } from "framer-motion";

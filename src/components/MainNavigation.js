@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { Linkedin, Github } from "./SubComponents/AllSvgs";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-const Layout = styled.div`
+const Layout = styled(motion.div)`
   width: 100vw;
   height: 5vw;
   padding-top: 2.5rem;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -73,7 +73,7 @@ const GithubContainer = styled(LinkedInContainer).attrs((_) => ({
 
 const MainNavigation = () => {
   return (
-    <Layout>
+    <Layout exit={{ opacity: 0, transition: { duration: 0.5 } }}>
       <Line
         initial={{ x: -200 }}
         animate={{ x: 0 }}

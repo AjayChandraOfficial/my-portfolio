@@ -4,6 +4,7 @@ import styled from "styled-components";
 import myImage from "../assets/Images/myImage.png";
 import ParticleComponent from "./SubComponents/ParticleComponent";
 import { motion } from "framer-motion";
+import MainNavigation from "./MainNavigation";
 const Container = styled(motion.div)`
   width: 100vw;
   height: 100vh;
@@ -156,6 +157,7 @@ const HomePage = () => {
         transition: { duration: 0.8 },
       }}
     >
+      <MainNavigation />
       <CenterContainer
         initial={{ opacity: 0 }}
         animate={{

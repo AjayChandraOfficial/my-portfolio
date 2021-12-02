@@ -6,6 +6,7 @@ import SkillComponent from "./SubComponents/SkillComponent";
 import ParticleComponent2 from "./SubComponents/ParticleComponent2";
 import spaceman from "../assets/Images/spaceman.png";
 import { NavLink } from "react-router-dom";
+import MainNavigation from "./MainNavigation";
 const Box = styled(motion.div)`
   width: 100vw;
   height: 100vh;
@@ -152,6 +153,7 @@ const Home = styled(NavLink)`
 const SkillsPage = () => {
   return (
     <Box exit={{ x: 1000, transition: { duration: 0.8 } }}>
+      <MainNavigation />
       <Center>
         <motion.h1
           initial={{ opacity: 0 }}

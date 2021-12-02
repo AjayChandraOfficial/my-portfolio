@@ -2,11 +2,14 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import MainNavigation from "./MainNavigation";
 import styled from "styled-components";
-import ParticleComponent3 from "./SubComponents/ParticleComponent3";
+import { motion } from "framer-motion";
 const MainContainer = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
+  @media (max-width: 700px) {
+    overflow-y: scroll;
+  }
 `;
 
 const BottomContainer = styled.div`
@@ -16,6 +19,15 @@ const BottomContainer = styled.div`
   /* CHANGE BOTTOM HEIGH HERE */
   height: 15%;
   background-color: ${(props) => props.theme.darkText};
+  @media (max-width: 700px) {
+    right: 0;
+    position: fixed;
+    /* top: 20; */
+    bottom: 25%;
+    width: 25%;
+    height: 30%;
+    border-radius: 15px;
+  }
 `;
 const ContactCard = styled.div`
   position: absolute;
@@ -35,6 +47,21 @@ const ContactCard = styled.div`
     color: ${(props) => props.theme.darkText};
     font-size: calc(2rem + 1vw);
     text-shadow: 5px 4px 5px rgba(0, 0, 0, 0.25);
+  }
+  @media (max-width: 700px) {
+    background: none;
+    box-shadow: none;
+    top: 50%;
+    width: 40%;
+    left: 50%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    h1 {
+      display: inline-block;
+      color: ${(props) => props.theme.background};
+      font-size: calc(2rem + 1vw);
+      text-shadow: none;
+    }
   }
 `;
 const ContactButton = styled(NavLink)`
@@ -61,6 +88,18 @@ const ContactButton = styled(NavLink)`
     background-color: ${(props) => props.theme.text};
     box-shadow: 8px 4px 8px 3px rgba(0, 0, 0, 0.25);
   }
+  @media (max-width: 700px) {
+    background-color: ${(props) => props.theme.background};
+    color: ${(props) => props.theme.darkText};
+    width: calc(5rem + 5vw);
+  }
+  @media (max-width: 400px) {
+    background-color: ${(props) => props.theme.background};
+    color: ${(props) => props.theme.darkText};
+    width: calc(3rem + 3vw);
+    align-items: center;
+    justify-content: center;
+  }
 `;
 const AboutContainer = styled.div`
   backdrop-filter: blur(10px);
@@ -71,6 +110,14 @@ const AboutContainer = styled.div`
   height: 50%;
   display: flex;
   justify-content: space-evenly;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    height: 100%;
+    gap: 2rem;
+  }
+  @media (max-width: 400px) {
+    left: calc(3rem + 3vw);
+  }
 `;
 const About = styled.div`
   border-radius: 14px;
@@ -89,6 +136,10 @@ const About = styled.div`
   h3 {
     color: ${(props) => props.theme.darkText};
     font-size: calc(1rem + 1vw);
+  }
+  @media (max-width: 400px) {
+    padding: 0 1rem;
+    width: 60%;
   }
 `;
 
@@ -115,6 +166,10 @@ const Resume = styled.div`
     color: ${(props) => props.theme.darkText};
     font-size: calc(1rem + 1vw);
   }
+  @media (max-width: 400px) {
+    padding: 0 1rem;
+    width: 60%;
+  }
 `;
 
 const ResumeButton = styled(ContactButton)`
@@ -134,8 +189,14 @@ const ResumeButton = styled(ContactButton)`
       color: ${(props) => props.theme.background};
     }
   }
+  @media (max-width: 400px) {
+    width: 4rem;
+    h4 {
+      font-size: 1rem;
+    }
+  }
 `;
-const Home = styled(NavLink)`
+const Home = motion(styled(NavLink)`
   position: absolute;
   text-decoration: none;
   top: 0%;
@@ -150,13 +211,17 @@ const Home = styled(NavLink)`
     bottom: 5%;
   }
   z-index: 3;
-`;
+`);
 const ResumeContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   h3 {
     font-size: calc(0.8rem + 1vw);
+  }
+  @media (max-width: 400px) {
+    padding: 0 1rem;
+    flex-direction: column;
   }
 `;
 const AboutPage = () => {
@@ -208,7 +273,13 @@ const AboutPage = () => {
         </ContactCard>
       </BottomContainer>
       <Home to="/">
-        <h2>Home</h2>
+        <motion.h2
+          initial={{ y: -200 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+        >
+          Home
+        </motion.h2>
       </Home>
     </MainContainer>
   );

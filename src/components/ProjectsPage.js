@@ -4,6 +4,7 @@ import { AllProjects } from "./SubComponents/AllProjects";
 import ProjectCard from "./SubComponents/ProjectCard";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import MainNavigation from "./MainNavigation";
 const Box = styled(motion.div)`
   height: 100vh;
   position: relative;
@@ -18,7 +19,7 @@ const Box = styled(motion.div)`
 `;
 
 const LeftHeading = styled.div`
-  position: fixed;
+  position: absolute;
   overflow: hidden;
   left: 15%;
   top: 23%;
@@ -106,6 +107,7 @@ const anim_ProjectVariant = {
 const ProjectsPage = () => {
   return (
     <Box exit={{ x: -1000, transition: { duration: 0.8 } }}>
+      <MainNavigation />
       <LeftHeading>
         <motion.h1
           initial={{ opacity: 0 }}
