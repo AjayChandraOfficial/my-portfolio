@@ -66,10 +66,25 @@ const LinkedInContainer = motion(styled(NavLink).attrs((_) => ({
     cursor: pointer;
   }
 `);
-const GithubContainer = styled(LinkedInContainer).attrs((_) => ({
+const GithubContainer = motion(styled(NavLink).attrs((_) => ({
   target: "_blank",
   to: { pathname: "https://github.com/AjayChandraOfficial" },
-}))``;
+}))`
+  & > * {
+    width: 4.8rem;
+    height: 4.8rem;
+    color: ${(props) => props.theme.darkText};
+    transition: all 0.2s;
+    @media (max-width: 800px) {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+  }
+  & > *:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+`);
 
 const MainNavigation = () => {
   return (

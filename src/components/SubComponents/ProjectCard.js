@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 const Card = styled(motion.div)`
   display: inline-block;
-  width: 18rem;
+  width: 15vw;
   height: 35vh;
   background-color: ${(props) => props.theme.text};
   border-radius: 15px;
@@ -18,7 +18,7 @@ const Card = styled(motion.div)`
   z-index: 1;
   h1 {
     color: ${(props) => props.theme.background};
-    font-size: calc(1rem + 1vw);
+    font-size: calc(1.2rem + 1vw);
     font-weight: 700;
     /* position: absolute;
     top: 5%; */
@@ -26,7 +26,7 @@ const Card = styled(motion.div)`
   h3 {
     align-self: left;
     margin-top: 5%;
-    font-size: calc(0.5rem + 0.5vw);
+    font-size: calc(0.7rem + 0.5vw);
     line-height: 2.3rem;
     /* position: absolute;
     top: 20%; */

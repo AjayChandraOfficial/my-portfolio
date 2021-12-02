@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import MainNavigation from "./MainNavigation";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import ResumePDF from "../assets/Resume.pdf";
 const MainContainer = styled(motion.div)`
   position: relative;
   width: 100vw;
@@ -294,10 +295,7 @@ const AboutPage = () => {
           </ul>
           <ResumeContainer>
             <h3>Checkout my Resume here</h3>
-            <ResumeButton
-              target="_blank"
-              to={{ pathname: "mailto:ajaychandraofficial@gmail.com" }}
-            >
+            <ResumeButton target="_blank" to={ResumePDF}>
               <h4>Resume</h4>
             </ResumeButton>
           </ResumeContainer>
