@@ -17,6 +17,7 @@ const Box = styled(motion.div)`
   bottom: 0; */
   position: relative;
   overflow-y: hidden;
+  overflow-x: hidden;
   /* z-index: 1; */
   @media (max-width: 800px) {
     overflow-y: scroll;

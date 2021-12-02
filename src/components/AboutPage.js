@@ -3,16 +3,20 @@ import { NavLink } from "react-router-dom";
 import MainNavigation from "./MainNavigation";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-const MainContainer = styled.div`
+const MainContainer = styled(motion.div)`
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
   @media (max-width: 700px) {
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 `;
 
-const BottomContainer = styled.div`
+const BottomContainer = styled(motion.div)`
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -29,7 +33,7 @@ const BottomContainer = styled.div`
     border-radius: 15px;
   }
 `;
-const ContactCard = styled.div`
+const ContactCard = styled(motion.div)`
   position: absolute;
   bottom: 10;
   width: 40%;
@@ -101,7 +105,7 @@ const ContactButton = styled(NavLink)`
     justify-content: center;
   }
 `;
-const AboutContainer = styled.div`
+const AboutContainer = styled(motion.div)`
   backdrop-filter: blur(10px);
   position: absolute;
   left: calc(6rem + 5vw);
@@ -119,7 +123,7 @@ const AboutContainer = styled.div`
     left: calc(3rem + 3vw);
   }
 `;
-const About = styled.div`
+const About = styled(motion.div)`
   border-radius: 14px;
   border: 3px solid ${(props) => props.theme.darkText};
   width: 40%;
@@ -149,7 +153,7 @@ const ListItem = styled.li`
   font-weight: bold;
   font-size: calc(0.5rem + 1vw);
 `;
-const Resume = styled.div`
+const Resume = styled(motion.div)`
   border-radius: 14px;
   border: 3px solid ${(props) => props.theme.darkText};
   width: 40%;
@@ -224,12 +228,50 @@ const ResumeContainer = styled.div`
     flex-direction: column;
   }
 `;
+
+const AboutContainerVariants = {
+  from: { opacity: 0 },
+  to: {
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.3,
+    },
+  },
+};
+const AboutChildrenVaraints = {
+  from: { opacity: 0 },
+  to: {
+    opacity: 1,
+
+    transition: {
+      type: "spring",
+      duration: 1,
+    },
+  },
+};
+const BottomContainerVariants = {
+  from: { y: 1000 },
+  to: { y: 0, transition: { when: "beforeChildren", duration: 1 } },
+};
+const BottomContainerChildVariants = {
+  from: { opacity: 0 },
+  to: {
+    opacity: 1,
+    transition: { duration: 0.4 },
+  },
+};
 const AboutPage = () => {
   return (
-    <MainContainer>
-      <MainNavigation />
-      <AboutContainer>
-        <About>
+    <MainContainer exit={{ y: 1000, transition: { duration: 0.8 } }}>
+      <MainNavigation exit={{ opacity: 0, transition: { duration: 0.4 } }} />
+      <AboutContainer
+        variants={AboutContainerVariants}
+        initial="from"
+        animate="to"
+        exit={{ opacity: 0, transition: { duration: 0.4 } }}
+      >
+        <About variants={AboutChildrenVaraints}>
           <h1>About me</h1>
           <h3>
             I am a frontend developer based in India, I love to create simple
@@ -240,7 +282,7 @@ const AboutPage = () => {
             components using ReactJS.
           </h3>
         </About>
-        <Resume>
+        <Resume variants={AboutChildrenVaraints}>
           <h3>My key skills include:</h3>
           <ul>
             <ListItem>Coding</ListItem>
@@ -260,8 +302,13 @@ const AboutPage = () => {
           </ResumeContainer>
         </Resume>
       </AboutContainer>
-      <BottomContainer>
-        <ContactCard>
+      <BottomContainer
+        variants={BottomContainerVariants}
+        initial="from"
+        animate="to"
+        exit={{ opacity: 0, transition: { duration: 0.4 } }}
+      >
+        <ContactCard variants={BottomContainerChildVariants}>
           <h1>Let's talk?</h1>
 
           <ContactButton
@@ -276,7 +323,8 @@ const AboutPage = () => {
         <motion.h2
           initial={{ y: -200 }}
           animate={{ y: 0 }}
-          transition={{ duration: 1, delay: 1 }}
+          transition={{ duration: 1 }}
+          exit={{ opacity: 0, transition: { duration: 0.4 } }}
         >
           Home
         </motion.h2>
