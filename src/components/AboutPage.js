@@ -97,6 +97,9 @@ const ContactButton = styled(NavLink)`
     background-color: ${(props) => props.theme.background};
     color: ${(props) => props.theme.darkText};
     width: calc(5rem + 5vw);
+    &:hover {
+      background-color: ${(props) => props.theme.background};
+    }
   }
   @media (max-width: 400px) {
     background-color: ${(props) => props.theme.background};
@@ -153,6 +156,9 @@ const ListItem = styled.li`
   font-family: inherit;
   font-weight: bold;
   font-size: calc(0.5rem + 1vw);
+  @media (max-width: 700px) {
+    font-size: calc(0.8rem + 1vw);
+  }
 `;
 const Resume = styled(motion.div)`
   border-radius: 14px;
