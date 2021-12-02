@@ -91,7 +91,7 @@ const MainNavigation = () => {
       <MiddleLine
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1, delay: 1 }}
       />
       <LinkedInContainer
         initial={{ opacity: 0 }}

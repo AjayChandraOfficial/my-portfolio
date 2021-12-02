@@ -216,7 +216,7 @@ const HomePage = () => {
           Skills
         </motion.h2>
       </Skills>
-      <About to="/" onClick={aboutClicked}>
+      <About to="/about" onClick={aboutClicked}>
         <motion.h2
           whileHover={{
             scale: 1.1,

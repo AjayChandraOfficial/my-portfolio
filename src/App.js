@@ -7,6 +7,7 @@ import SkillsPage from "./components/SkillsPage";
 import { AnimatePresence } from "framer-motion";
 import { Route, Switch } from "react-router-dom";
 import ProjectsPage from "./components/ProjectsPage";
+import AboutPage from "./components/AboutPage";
 const colors = {
   background: "#121212",
   text: "#E9CE5D",
@@ -21,13 +22,14 @@ function App() {
     <>
       <ThemeProvider theme={colors}>
         <GlobalStyle />
-        <MainNavigation />
+        {/* <MainNavigation /> */}
         <AnimatePresence exitBeforeEnter>
           <Switch location={location} key={location.key}>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/home" component={HomePage} />
             <Route exact path="/skills" component={SkillsPage} />
             <Route exact path="/projects" component={ProjectsPage} />
+            <Route exact path="/about" component={AboutPage} />
           </Switch>
         </AnimatePresence>
       </ThemeProvider>
