@@ -207,6 +207,7 @@ const SkillsPage = () => {
             transition: { type: "spring", delay: 0.6, duration: 1 },
           }}
           exit={{ opacity: 0, transition: { duration: 0.6 } }}
+          
         >
           Home
         </motion.h2>

@@ -206,6 +206,7 @@ const Home = motion(styled(NavLink)`
   top: 0%;
   left: 50%;
   transform: translate(-50%);
+  transition: all 0.3s;
   h2 {
     font-size: calc(2rem + 1.3vw);
   }
@@ -321,6 +322,16 @@ const AboutPage = () => {
       </BottomContainer>
       <Home to="/">
         <motion.h2
+          whileHover={{
+            scale: 1.1,
+            transition: {
+              delay: 0,
+              type: "spring",
+              mass: 0.4,
+              stiffness: 200,
+              damping: 1,
+            },
+          }}
           initial={{ y: -200 }}
           animate={{ y: 0 }}
           transition={{ duration: 1 }}
